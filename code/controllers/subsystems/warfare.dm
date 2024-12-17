@@ -83,6 +83,9 @@ SUBSYSTEM_DEF(warfare)
 	for(var/turf/simulated/floor/trench/fake/T in world)//Make all the fake trenches into real ones.
 		T.ChangeTurf(/turf/simulated/floor/trench)
 	sound_to(world, sound('sound/ambience/distant_warfare.ogg', repeat = 1))
+	for(var/mob/living/carbon/human/H in GLOB.human_mob_list)
+		H.set_squad_huds()
+		H.set_team_huds()
 
 /datum/controller/subsystem/warfare/proc/check_completion()
 	if(red.left <= 0)
