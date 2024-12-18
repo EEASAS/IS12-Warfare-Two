@@ -125,13 +125,18 @@
 	if(!can_climb(user))
 		return
 
+	if(locate(/obj/structure/barbwire, get_turf(user))) // fuck you asshole, stop abusing climb to get out of barbed wire
+		return
+
 	if(istype(get_area(src), /area/warfare))//We're trying to go?
 		if(locate(/obj/item/gun/projectile/automatic/mg08) in user)//Locate the mg.
 			if(istype(usr.l_hand, /obj/item/gun/projectile/automatic/mg08) || istype(usr.r_hand, /obj/item/gun/projectile/automatic/mg08))
 				to_chat(user, "I can't climb with this in my hands!")//No you fucking don't.
-				return //Keep that mg stowed asshole
-		if(locate(/obj/structure/barbwire, get_turf(user))) // fuck you asshole, stop abusing climb to get out of barbed wire
-			return
+				return // Edited this to remove the need for the structure. Just fucking put it on your back :sob:
+		else if(locate(/obj/item/mortar_launcher) in user)//Locate the mg.
+			if(istype(usr.l_hand, /obj/item/mortar_launcher) || istype(usr.r_hand, /obj/item/mortar_launcher))
+				to_chat(user, "I can't climb with this in my hands!")//No you fucking don't.
+				return
 
 	user.visible_message("<span class='warning'>[user] starts climbing onto \the [src]!</span>")
 	climbers |= user

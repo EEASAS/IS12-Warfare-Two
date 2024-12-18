@@ -70,7 +70,7 @@ var/list/limb_icon_cache = list()
 			gender = "_m"
 		//else if (dna && dna.GetUIState(DNA_UI_GENDER))
 		//	gender = "_f"
-		else if(owner && owner.gender == FEMALE)
+		if(owner && owner.gender == FEMALE)
 			gender = "_f"
 
 	icon_state = "[icon_name][gender]"

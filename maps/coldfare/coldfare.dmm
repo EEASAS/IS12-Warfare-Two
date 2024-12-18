@@ -35,7 +35,7 @@
 "aI" = (/obj/structure/table/rack/nosmooth/wood/alt{dir = 4},/turf/simulated/floor/concrete/random,/area/warfare/homebase/blue)
 "aJ" = (/obj/structure/closet/secure_closet/warfare,/turf/simulated/floor/stones,/area/warfare/homebase/blue)
 "aK" = (/obj/item/flame/candle,/obj/item/storage/fancy/cigarettes/carcinomas,/obj/item/ammo_box/rifle,/obj/structure/table/rack/nosmooth/wood/alt{dir = 5},/turf/simulated/floor/concrete/random,/area/warfare/homebase/blue)
-"aL" = (/obj/structure/reagent_dispensers/watertank/blue,/turf/simulated/floor/concrete/random,/area/warfare/homebase/red/div)
+"aL" = (/obj/structure/reagent_dispensers/watertank/red,/turf/simulated/floor/concrete/random,/area/warfare/homebase/red/div)
 "aM" = (/obj/item/flame/candle,/obj/item/storage/fancy/cigarettes/carcinomas,/obj/structure/table/rack/nosmooth/wood/alt{dir = 5},/turf/simulated/floor/concrete/random,/area/warfare/homebase/blue)
 "aN" = (/obj/item/flame/candle,/obj/item/wirecutters,/obj/item/storage/firstaid/regular,/obj/structure/table/rack/nosmooth/wood/alt{dir = 6},/turf/simulated/floor/concrete/random,/area/warfare/homebase/blue)
 "aO" = (/obj/structure/closet/crate,/obj/item/grenade/frag/warfare,/obj/item/grenade/frag/warfare,/obj/item/grenade/frag/warfare,/obj/item/grenade/frag/warfare,/obj/machinery/light/caged{pixel_y = -14; dir = 1; pixel_x = 0},/turf/simulated/floor/concrete/random,/area/warfare/battlefield/capture_point/blue/two)
@@ -1140,7 +1140,6 @@ eaeaeaebebebaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaadYdYdYdYabbgababababababab
 eaeaeaebebebaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaadYdYdYdYdYdYdYdYdYdYdYdYdYdYdYdYdYdYdYdYdYaaaa
 eaeaeaebebebaaaaecedaaeeaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 "}
-
 (1,1,2) = {"
 aaaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaa
 aaaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaqaa
