@@ -239,6 +239,33 @@
 		list(mode_name="automatic",   	 burst=1, fire_delay=0,  move_delay=0, one_hand_penalty=6, burst_accuracy=list(0,-1,-1), dispersion=list(0.0, 3, 5), automatic = 2)
 		)
 
+/obj/item/gun/projectile/automatic/m22/warmonger/fully_auto/ersatz
+	name = "GA Ersatz"
+	desc = "A copied rifle design from Greensland. It's built with quality, even though the Greens have never gotten into a battle before."
+	icon_state = "ersatz"
+	item_state = "ersatz"
+	wielded_item_state = "ersatz-wielded"
+	fire_sound = 'sound/weapons/guns/fire/ak_fire.ogg'
+	unload_sound = 'sound/weapons/guns/interact/ak_magout.ogg'
+	reload_sound = 'sound/weapons/guns/interact/ak_magin.ogg'
+	cock_sound = 'sound/weapons/guns/interact/ak_cock.ogg'
+
+	loaded_icon = "ersatz"
+	unwielded_loaded_icon = "ersatz"
+	wielded_loaded_icon = "ersatz-wielded"
+	unloaded_icon = "ersatz-e"
+	unwielded_unloaded_icon = "ersatz-e"
+	wielded_unloaded_icon = "ersatz-wielded-e"
+	far_fire_sound = 'sound/effects/weapons/gun/ak_farfire.ogg'
+	condition = 250
+
+	gun_type = GUN_AUTOMATIC
+
+	firemodes = list(
+		list(mode_name="semiauto",       burst=1, fire_delay=0,    move_delay=null, one_hand_penalty=4, burst_accuracy=null, dispersion=null, automatic = 0),
+		list(mode_name="automatic",   	 burst=1, fire_delay=0,  move_delay=0, one_hand_penalty=6, burst_accuracy=list(0,-1,-1), dispersion=list(0.0, 3, 5), automatic = 2)
+		)
+
 
 /obj/item/gun/projectile/automatic/m22/warmonger/fully_auto/nemesis
 	name = "Mk.1 Nemesis"
