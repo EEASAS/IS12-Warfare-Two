@@ -1122,7 +1122,7 @@
 			generate_tracer_between_points(p, beam_segments[p], tracer_type, color, duration)
 	if(muzzle_type && !silenced)
 		var/datum/point/p = beam_segments[1]
-		var/atom/movable/thing = new muzzle_type
+		var/atom/movable/thing = new /obj/effect/abstract
 		p.move_atom_to_src(thing)
 		var/matrix/M = new
 		M.Turn(original_angle)

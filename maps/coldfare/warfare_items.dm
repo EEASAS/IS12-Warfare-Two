@@ -161,11 +161,15 @@
 	warfare_team = RED_TEAM
 	icon_state = "redgrunt_child"
 	worldicons = list("reduniworld1","reduniworld2","reduniworld3")
+	child_exclusive = TRUE
+	canremove = FALSE
 
 /obj/item/clothing/under/child_jumpsuit/warfare/blue
 	warfare_team = BLUE_TEAM
 	icon_state = "bluegrunt_child"
 	worldicons = list("blueuniworld1","blueuniworld2","blueuniworld3")
+	child_exclusive = TRUE
+	canremove = FALSE
 
 //Red shit
 /obj/item/clothing/suit/armor/redcoat
@@ -176,7 +180,7 @@
 	cold_protection = UPPER_TORSO | LOWER_TORSO | LEGS | FEET | ARMS | HANDS
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
 	worldicons = list("redcoatworld1","redcoatworld2","redcoatworld3")
-	sprite_sheets = list(SPECIES_CHILD = 'icons/mob/species/child/mask.dmi')
+	sprite_sheets = list(SPECIES_CHILD = 'icons/mob/species/child/suit.dmi')
 
 	item_state_slots = list(
 		slot_l_hand_str = "cloth",
@@ -367,7 +371,7 @@
 	cold_protection = UPPER_TORSO | LOWER_TORSO | LEGS | FEET | ARMS | HANDS
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
 	worldicons = list("bluecoatworld1","bluecoatworld2","bluecoatworld3")
-	sprite_sheets = list(SPECIES_CHILD = 'icons/mob/species/child/mask.dmi')
+	sprite_sheets = list(SPECIES_CHILD = 'icons/mob/species/child/suit.dmi')
 
 	item_state_slots = list(
 		slot_l_hand_str = "cloth",
@@ -427,7 +431,7 @@
 	warfare_team = BLUE_TEAM
 	can_be_worn_by_child = FALSE
 	worldicons = list("blueuniworld1","blueuniworld2","blueuniworld3")
-	sprite_sheets = list(SPECIES_CHILD = 'icons/mob/species/child/mask.dmi')
+	//sprite_sheets = list(SPECIES_CHILD = 'icons/mob/species/child/mask.dmi')
 	canremove = FALSE
 
 /obj/item/clothing/under/blue_uniform/equipped(mob/user) // This is stupid. But it works.
@@ -916,12 +920,7 @@
 	icon_state = "redpack"
 
 /obj/item/storage/backpack/satchel/warfare/chestrig/red
-	icon_state = "redchestrig"
-
-	New()
-		icon_state = pick("redchestrig", "redchestrigalt")
-		item_state = icon_state
-		..()
+	icon_state = "chestrig"
 
 /obj/item/storage/backpack/satchel/warfare/chestrig/red/medic
 	New()
@@ -977,7 +976,7 @@
 	icon_state = "blue_backpack"
 
 /obj/item/storage/backpack/satchel/warfare/chestrig/blue
-	icon_state = "blue_chestrig"
+	icon_state = "chestrig"
 
 /obj/item/storage/backpack/satchel/warfare/chestrig/blue/soldier
 	New()
@@ -986,7 +985,7 @@
 			new /obj/item/ammo_magazine/c45rifle/akarabiner(src)
 
 /obj/item/storage/backpack/satchel/warfare/chestrig/blue/medical
-	icon_state = "medic_chestrigblue"
+	icon_state = "chestrig"
 
 	New()
 		..()

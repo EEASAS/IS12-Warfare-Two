@@ -25,15 +25,16 @@
 					if("Numpad9") key = "9"
 				var/atom/A = mob.get_active_hand()
 				if(A)
-					if(A.keyPress(key, mob)) // for items we hold
+					if(A.keyPress(null, mob)) // for items we hold
 						A.keyPress(key, mob)
 						return TRUE
 				for(var/atom/C in view(1, mob))
-					if(C.keyPress(key, mob))
-						C.keyPress(key, mob)
-						return TRUE
+					if(isworld(C.loc)) // somehow??
+						if(C.keyPress(null, mob))
+							C.keyPress(key, mob)
+							return TRUE
 					continue
-				switch(key)
+				switch(key) // AUGH
 					if("1")
 						usr.a_intent_change(I_HELP)
 						return

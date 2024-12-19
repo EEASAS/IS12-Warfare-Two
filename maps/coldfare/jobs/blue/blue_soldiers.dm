@@ -307,24 +307,24 @@
 	else if(prob(40))
 		suit_store = /obj/item/gun/projectile/automatic/m22/warmonger/fully_auto/nemesis
 		r_pocket = /obj/item/grenade/smokebomb
-		backpack_contents = list(/obj/item/clothing/mask/gas/ancient = 1)
-		//chest_holster = /obj/item/storage/backpack/satchel/warfare/chestrig/blue/soldier
+		backpack_contents = list(/obj/item/clothing/mask/gas/blue = 1)
+		chest_holster = /obj/item/storage/backpack/satchel/warfare/chestrig/blue/soldier
 	else if(prob(5)) //I am light weapons guy. And this is my weapon.
 		suit_store = /obj/item/gun/projectile/automatic/m22/warmonger/fully_auto/oldlmg
 		r_pocket = /obj/item/grenade/smokebomb
-		backpack_contents = list(/obj/item/clothing/mask/gas/ancient = 1)
+		backpack_contents = list(/obj/item/clothing/mask/gas/blue = 1)
 		chest_holster = /obj/item/storage/backpack/satchel/warfare/chestrig/blue/oldlmg
 	else
 		suit_store =/obj/item/gun/projectile/automatic/m22/warmonger/m14/battlerifle
 		r_pocket = /obj/item/grenade/smokebomb
 		chest_holster = /obj/item/storage/backpack/satchel/warfare/chestrig/blue/sl
-		backpack_contents = list(/obj/item/clothing/mask/gas/ancient = 1)
-
+		backpack_contents = list(/obj/item/clothing/mask/gas/blue = 1)
+/*
 	if(prob(50))//Give them an MRE. They're going to be out there a while.
 		backpack_contents += list(/obj/item/storage/box/mre = 1)
 	else
 		backpack_contents += list(/obj/item/storage/box/mre/var1 = 1)
-
+*/
 	if(aspect_chosen(/datum/aspect/nightfare))
 		backpack_contents += list(/obj/item/ammo_box/flares/blue = 1, /obj/item/torch/self_lit = 1)
 	..()
@@ -443,19 +443,21 @@
 	backpack_contents = list(/obj/item/ammo_magazine/handful/revolver = 2, /obj/item/grenade/smokebomb = 1)
 
 /decl/hierarchy/outfit/job/bluesoldier/leader/equip()
+/*
 	if(prob(50))//Give them an MRE. They're going to be out there a while.
 		backpack_contents += list(/obj/item/storage/box/mre = 1)
 	else
 		backpack_contents += list(/obj/item/storage/box/mre/var1 = 1)
+*/
 	if(aspect_chosen(/datum/aspect/nightfare))
 		backpack_contents += list(/obj/item/ammo_box/flares/blue = 1 , /obj/item/torch/self_lit = 1)
 	..()
 
 /decl/hierarchy/outfit/job/bluesoldier/scout
-	suit = /obj/item/clothing/suit/child_coat/blue
+	suit = /obj/item/clothing/suit/armor/bluecoat
 	l_ear = /obj/item/device/radio/headset/blue_team/all
 	uniform = /obj/item/clothing/under/child_jumpsuit/warfare/blue
-	shoes = /obj/item/clothing/shoes/child_shoes
+	shoes = /obj/item/clothing/shoes/jackboots/warfare/blue
 	gloves = null
 	r_pocket = /obj/item/device/binoculars
 	backpack_contents = list(/obj/item/grenade/smokebomb = 1)

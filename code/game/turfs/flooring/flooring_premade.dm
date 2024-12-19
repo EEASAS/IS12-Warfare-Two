@@ -89,6 +89,9 @@
 	icon = 'icons/turf/interwar_trenches.dmi'
 	icon_state = "Wooden trench floor"
 
+/turf/simulated/floor/ex_act(severity)
+	return
+
 /turf/simulated/floor/wood/New()
 	. = ..()
 	if(prob(15))
@@ -162,6 +165,9 @@
 	icon_state = "concrete"
 	atom_flags = ATOM_FLAG_CLIMBABLE
 
+/turf/simulated/floor/concrete/ex_act(severity)
+	return
+
 /turf/simulated/floor/concrete/can_climb(mob/living/user, post_climb_check)
 	if(locate(/obj/structure/bridge, get_turf(user)))
 		return FALSE
@@ -199,6 +205,9 @@
 /turf/simulated/floor/stones
 	icon = 'icons/turf/interwar_trenches.dmi'
 	icon_state = "stone trench floor"
+
+/turf/simulated/floor/stones/ex_act(severity)
+	return
 
 /turf/simulated/floor/stones/New()
 	. = ..()

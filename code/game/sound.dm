@@ -123,6 +123,7 @@ GLOBAL_LIST_INIT(megaphone, list('sound/effects/megaphone_01.ogg','sound/effects
 GLOBAL_LIST_INIT(launcher_fire, list('sound/weapons/guns/fire/launcher_fire_01.ogg','sound/weapons/guns/fire/launcher_fire_02.ogg'))
 GLOBAL_LIST_INIT(sentrystep,list('sound/effects/footsteps/armor/sentry/sentry1.ogg','sound/effects/footsteps/armor/sentry/sentry2.ogg','sound/effects/footsteps/armor/sentry/sentry3.ogg'))
 GLOBAL_LIST_INIT(pracstep,list('sound/effects/footsteps/prac/prac1.ogg','sound/effects/footsteps/prac/prac2.ogg','sound/effects/footsteps/prac/prac3.ogg'))
+GLOBAL_LIST_INIT(keypad,list('sound/effects/keypad/pad1.ogg','sound/effects/keypad/pad2.ogg'))
 
 /proc/playsound(atom/source, soundin, vol as num, vary, extrarange as num, falloff, is_global, frequency, is_ambiance = 0,  ignore_walls = TRUE, zrange = 2, override_env, envdry, envwet)
 	if(isarea(source))
@@ -311,6 +312,7 @@ var/const/FALLOFF_SOUNDS = 0.5
 			if ("launcher_fire") soundin = pick(GLOB.launcher_fire)
 			if ("sentry_step") soundin = pick(GLOB.sentrystep)
 			if ("cloth_step") soundin = pick(GLOB.pracstep)
+			if ("keypad") soundin = pick(GLOB.keypad)
 	return soundin
 
 

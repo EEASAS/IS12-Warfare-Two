@@ -104,6 +104,8 @@
 
 		handle_gas_mask_sound()//Was in breathing, but people don't breathe anymore.
 
+		handle_blood_pools()
+
 		if(!client && !mind)
 			species.handle_npc(src)
 
@@ -914,9 +916,9 @@
 	if(stat != DEAD && vomit_score > 25 && prob(10))
 		spawn vomit(1, vomit_score, vomit_score/25)
 
-	//var/area/A = get_area(src)
-	//if(client && world.time >= client.played + 600) // TWOFARE EDIT - This broke ambiences.. but in return.. it was our greatest hero.. random ambience noises.. we will miss you..
-	//	A.play_ambience(src)
+	var/area/A = get_area(src)
+	if(client && world.time >= client.played + 600) // TWOFARE EDIT - This broke ambiences.. but in return.. it was our greatest hero.. random ambience noises.. we will miss you..
+		A.play_ambience(src)
 	if(stat == UNCONSCIOUS && world.time - l_move_time < 5 && prob(10))
 		to_chat(src,"<span class='notice'>You feel like you're [pick("moving","flying","floating","falling","hovering")].</span>")
 
@@ -1413,3 +1415,15 @@
 	// runs an update to check if we've become jaundiced, pale or low on oxygen resulting in icon changes
 	if(stat != DEAD && !(life_tick % 15)) // don't want to do this too often. update_body() also won't do anything if nothing has changed
 		update_body()
+
+/mob/living/carbon/human/proc/handle_blood_pools() // added the pulledby condition so that it doesn't make pools whenever we're dragging someone
+	if((resting) && vessel.total_volume > 200 && !pulledby) //check if human is laying and has blood, i dont know if this is the right way to check for laying
+		for(var/obj/item/organ/external/org in organs) // added a check so that they don't start making pools if they're below 200
+			if(org.status & ORGAN_ARTERY_CUT || org.status & ORGAN_BLEEDING) // check if bleeding, i dont know if there is another way to do it maybe without the loop
+				if(isturf(loc))
+					var/obj/effect/decal/cleanable/bloodpool/B = locate(/obj/effect/decal/cleanable/bloodpool) in loc
+					if(!B)
+						B = new /obj/effect/decal/cleanable/bloodpool(loc)
+						return 0
+					else
+						return 0

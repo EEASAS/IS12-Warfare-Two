@@ -157,21 +157,19 @@
 	name = "Sound Probe"
 	icon_state = "sound"
 	sound_env = QUARRY
-	ambience = list('sound/ambience/new/crematorium.ogg')
-	music = "none"
+	music = 'sound/ambience/new/crematorium.ogg'
 
 /obj/hammereditor/sound_probe/lunch
 	icon = 'icons/hammer/source.dmi'
 	name = "Sound Probe"
 	icon_state = "sound"
 	sound_env = CONCERT_HALL
-	ambience = FALSE
-	music = FALSE
+	ambience = null
+	music = null
 
 /obj/hammereditor/sound_probe/basement
 	icon = 'icons/hammer/source.dmi'
 	name = "Sound Probe"
 	icon_state = "sound"
 	sound_env = CONCERT_HALL
-	ambience = list('sound/ambience/new/underground.ogg')
-	music = FALSE
+	music = 'sound/ambience/new/underground.ogg'

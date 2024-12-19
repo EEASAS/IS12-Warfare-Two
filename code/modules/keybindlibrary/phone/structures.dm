@@ -449,8 +449,10 @@ GLOBAL_LIST_EMPTY(phone_list)
 	sound_token = sound_player.PlayLoopingSound(handset, sound_id, 'code/modules/keybindlibrary/phone/sound/rotaryphone/dialtone.ogg', volume = 35, range = 3, falloff = 0.1, prefer_mute = TRUE, ignore_vis = TRUE)
 
 /obj/structure/phone/rotary/inputnumber(key as text, mob/living/user)
+	if(!key && user)
+		return TRUE
 	if (!CanPhysicallyInteract(user) || !caninput || oncallwith || phonemounted || cooldown)
-		return
+		return FALSE
 	if (!phonemounted && key in list("1", "2", "3", "4", "5", "6", "7", "8", "9", "0"))
 		var/keycooldown
 		switch(key)

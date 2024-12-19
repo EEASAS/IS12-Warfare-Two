@@ -309,25 +309,25 @@
 		r_pocket = /obj/item/ammo_box/shotgun
 	else if(prob(40))
 		suit_store = /obj/item/gun/projectile/automatic/m22/warmonger/fully_auto
-		backpack_contents = list(/obj/item/clothing/mask/gas/ancient = 1)
+		backpack_contents = list(/obj/item/clothing/mask/gas/red = 1)
 		r_pocket = /obj/item/grenade/smokebomb
-		//chest_holster = /obj/item/storage/backpack/satchel/warfare/chestrig/red
+		chest_holster = /obj/item/storage/backpack/satchel/warfare/chestrig/red/soldier
 	else if(prob(5)) //I am light weapons guy. And this is my weapon.
 		suit_store = /obj/item/gun/projectile/automatic/m22/warmonger/fully_auto/oldlmg
 		r_pocket = /obj/item/grenade/smokebomb
-		backpack_contents = list(/obj/item/clothing/mask/gas/ancient = 1)
+		backpack_contents = list(/obj/item/clothing/mask/gas/red = 1)
 		chest_holster = /obj/item/storage/backpack/satchel/warfare/chestrig/red/oldlmg
 	else
 		suit_store =/obj/item/gun/projectile/automatic/m22/warmonger/m14
 		r_pocket = /obj/item/grenade/smokebomb
 		chest_holster = /obj/item/storage/backpack/satchel/warfare/chestrig/red/sl
-		backpack_contents = list(/obj/item/clothing/mask/gas/ancient = 1)
-
+		backpack_contents = list(/obj/item/clothing/mask/gas/red = 1)
+/*
 	if(prob(50))//Give them an MRE. They're going to be out there a while.
 		backpack_contents += list(/obj/item/storage/box/mre = 1)
 	else
 		backpack_contents += list(/obj/item/storage/box/mre/var1 = 1)
-
+*/
 	if(aspect_chosen(/datum/aspect/nightfare))
 		backpack_contents += list(/obj/item/ammo_box/flares = 1, /obj/item/torch/self_lit = 1)
 	..()
@@ -446,20 +446,21 @@
 	backpack_contents = list(/obj/item/ammo_magazine/handful/revolver = 2, /obj/item/grenade/smokebomb = 1, /obj/item/clothing/mask/gas/captaingasmask = 1)
 
 /decl/hierarchy/outfit/job/redsoldier/leader/equip()
+/*
 	if(prob(50))//Give them an MRE. They're going to be out there a while.
 		backpack_contents += list(/obj/item/storage/box/mre = 1)
 	else
 		backpack_contents += list(/obj/item/storage/box/mre/var1 = 1)
-
+*/
 	if(aspect_chosen(/datum/aspect/nightfare))
 		backpack_contents += list(/obj/item/ammo_box/flares = 1 , /obj/item/torch/self_lit = 1)
 	..()
 
 /decl/hierarchy/outfit/job/redsoldier/scout
-	suit = /obj/item/clothing/suit/child_coat/red
+	suit = /obj/item/clothing/suit/armor/redcoat
 	l_ear = /obj/item/device/radio/headset/red_team/all
 	uniform = /obj/item/clothing/under/child_jumpsuit/warfare/red
-	shoes = /obj/item/clothing/shoes/child_shoes
+	shoes = /obj/item/clothing/shoes/jackboots/warfare/red
 	gloves = null
 	r_pocket = /obj/item/device/binoculars
 	backpack_contents = list(/obj/item/grenade/smokebomb = 1)
