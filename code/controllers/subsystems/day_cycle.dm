@@ -42,10 +42,10 @@ SUBSYSTEM_DEF(day_cycle)
 
 /datum/controller/subsystem/day_cycle/Initialize()
 	phases = list(
-		new /datum/day_cycle_phase("#000000", 7 MINUTES,  "midnight"),
+		new /datum/day_cycle_phase("#000000", 5 MINUTES,  "midnight"),
 		new /datum/day_cycle_phase("#110500", 2 MINUTES,  "dawn_start"),
 		new /datum/day_cycle_phase("#9e4f1b", 2 MINUTES,  "sunrise"),
-		new /datum/day_cycle_phase("#a9b2c4", 7 MINUTES,  "noon"),
+		new /datum/day_cycle_phase("#a9b2c4", 9 MINUTES,  "noon"),
 		new /datum/day_cycle_phase("#a35520", 2 MINUTES,  "sunset"),
 		new /datum/day_cycle_phase("#110500", 2 MINUTES,  "dusk_end"),
 	)
@@ -125,12 +125,17 @@ SUBSYSTEM_DEF(day_cycle)
 	var/dt = world.time - last_process_time
 	last_process_time = world.time
 
+	var/previous_time = current_time
 	current_time = (current_time + dt * speed)
 
 	if(current_time >= total_duration)
 		current_time = current_time % total_duration
 	if(current_time < 0)
 		current_time = total_duration + (current_time % total_duration)
+
+	var/six_am = total_duration / 4
+	if(previous_time < six_am && current_time >= six_am)
+		award_logistics_credits()
 
 	var/accumulated_time = 0
 	var/found_index = 0
@@ -187,6 +192,34 @@ SUBSYSTEM_DEF(day_cycle)
 
 	process_weather(dt)
 	update_weather_audio()
+
+/datum/controller/subsystem/day_cycle/proc/award_logistics_credits()
+	if(!SSwarfare)
+		return
+
+	award_logistics_team_credits(SSwarfare.red, "Red Logistics Lieutenant", RED_TEAM)
+	award_logistics_team_credits(SSwarfare.blue, "Blue Logistics Lieutenant", BLUE_TEAM)
+
+/datum/controller/subsystem/day_cycle/proc/award_logistics_team_credits(datum/team/team, role_title, faction_id)
+	if(!team)
+		return
+
+	var/logistics_lieutenant_present = FALSE
+	for(var/mob/living/carbon/human/H in team.team)
+		if(H.mind && H.mind.assigned_role == role_title)
+			logistics_lieutenant_present = TRUE
+			break
+
+	if(!logistics_lieutenant_present)
+		return
+
+	if(isnull(GLOB.faction_dosh[faction_id]))
+		GLOB.faction_dosh[faction_id] = 0
+	GLOB.faction_dosh[faction_id] += 150
+
+	for(var/obj/machinery/kaos/cargo_machine/cargo_machine in world)
+		if(cargo_machine.id == faction_id)
+			SSnanoui.update_uis(cargo_machine)
 
 /datum/controller/subsystem/day_cycle/proc/update_weather_audio()
 	var/sound_file = active_weather?.looping_sound

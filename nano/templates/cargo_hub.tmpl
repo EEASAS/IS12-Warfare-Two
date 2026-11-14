@@ -1,0 +1,19 @@
+<div style="background:#000000;color:#FFFFFF;padding:20px;font-family:monospace;">
+	<div style="border-bottom:2px solid {{:data.accent}};padding-bottom:16px;margin-bottom:20px;">
+		<div style="font-size:11px;letter-spacing:2px;color:#788589;">FIELD LOGISTICS NETWORK</div>
+		<div style="font-size:20px;font-weight:bold;color:#d5dbdd;">{{:data.machine_name}}</div>
+		<div style="font-size:11px;color:#788589;">SELECT AN APPLICATION</div>
+	</div>
+
+	<div class="cargoHubApplication" style="background:#2b2b2b;border:1px solid #788589;padding:32px;max-width:240px;margin:10px 0;text-align:left;">
+		<div style="font-size:16px;font-weight:bold;color:#d5dbdd;">CARGO</div>
+		<div style="color:#788589;margin:6px 0 10px;">Buy stuff here.</div>
+		{{:helper.link('OPEN CARGO', 'cart', {'action' : 'open_app', 'app' : 'cargo'})}}
+	</div>
+
+	<div class="cargoHubApplication" style="background:#2b2b2b;border:1px solid #788589;padding:32px;max-width:240px;margin:10px 0;text-align:left;">
+		<div style="font-size:16px;font-weight:bold;color:#d5dbdd;">WEATHER</div>
+		<div style="color:#788589;margin:6px 0 10px;">Just look outside you dummy.</div>
+		{{:helper.link('OPEN WEATHER', 'home', {'action' : 'open_app', 'app' : 'weather'})}}
+	</div>
+</div>

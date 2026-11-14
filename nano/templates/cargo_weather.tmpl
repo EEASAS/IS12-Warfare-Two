@@ -1,0 +1,27 @@
+<div style="background:#000000;color:#FFFFFF;padding:20px;font-family:monospace;">
+	<div style="border-bottom:2px solid {{:data.accent}};padding-bottom:32px;margin-bottom:20px;">
+		<div style="font-size:20px;font-weight:bold;color:#d5dbdd;">WEATHER REPORT</div>
+		<div style="margin-top:16px;">
+			{{:helper.link('HOME', 'home', {'action' : 'open_app', 'app' : 'main'})}}
+		</div>
+	</div>
+
+	<div style="background:#2b2b2b;border:1px solid #788589;padding:12px;margin-bottom:10px;">
+		<div style="color:#788589;font-size:11px;">REAL-WORLD TIME</div>
+		<div style="font-size:24px;color:#d5dbdd;">{{:data.current_time}}</div>
+		<div style="color:#788589;font-size:11px;margin-top:8px;">IN-GAME TIME</div>
+		<div style="font-size:24px;color:#d5dbdd;">{{:data.ingame_time}}</div>
+	</div>
+
+	<div style="background:#2b2b2b;border:1px solid #788589;padding:12px;margin-bottom:16px;">
+		<div style="color:#788589;font-size:11px;">CURRENT CONDITIONS</div>
+		<div style="font-size:18px;color:#d5dbdd;">{{:data.weather}}</div>
+		<div style="color:#788589;font-size:11px;margin-top:8px;">CLIMATE</div>
+		<div style="font-size:16px;color:#d5dbdd;">{{:data.climate}}</div>
+		{{if data.thunder_eta}}
+			<div style="color:#788589;font-size:11px;margin-top:8px;">TIME UNTIL NEXT THUNDER</div>
+			<div style="font-size:16px;color:#d5dbdd;">{{:data.thunder_eta}}</div>
+		{{/if}}
+	</div>
+
+</div>

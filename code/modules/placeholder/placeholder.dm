@@ -258,6 +258,51 @@ GLOBAL_LIST_EMPTY(faction_dosh)
 		return
 
 	user.set_machine(src)
+
+	if(ui_key == "weather")
+		var/weather = "Unavailable"
+		var/climate = "Unavailable"
+		var/thunder_eta = ""
+		var/ingame_time = "Unavailable"
+		var/list/conditions = list()
+		if(SSday_cycle)
+			if(SSday_cycle.total_duration > 0)
+				var/ingame_timeofday = round(SSday_cycle.current_time * (24 HOURS) / SSday_cycle.total_duration)
+				ingame_time = time2text(ingame_timeofday, "hh:mm")
+			if(SSday_cycle.active_weather)
+				weather = capitalize(SSday_cycle.active_weather.name)
+				if(SSday_cycle.active_weather.name == "storming")
+					var/time_to_thunder = max(0, SSday_cycle.next_lightning - world.time)
+					thunder_eta = "[round(time_to_thunder / 10)] seconds"
+			if(SSday_cycle.active_climate)
+				climate = capitalize(SSday_cycle.active_climate.name)
+			for(var/modifier_name in SSday_cycle.get_active_modifier_names())
+				if(modifier_name == "weather_misc")
+					continue
+				var/datum/weather_modifier/active_modifier = SSday_cycle.modifier_types[modifier_name]
+				if(active_modifier?.display_name)
+					conditions += active_modifier.display_name
+
+		if(conditions.len)
+			weather += " / [jointext(conditions, ", ")]"
+
+		var/list/weather_data = list(
+			"machine_name" = name,
+			"current_time" = time2text(world.timeofday, "hh:mm"),
+			"ingame_time" = ingame_time,
+			"weather" = weather,
+			"climate" = climate,
+			"thunder_eta" = thunder_eta,
+			"accent" = id == RED_TEAM ? "#d35b52" : "#6b9ed6"
+		)
+		ui = SSnanoui.try_update_ui(user, src, ui_key, ui, weather_data, force_open)
+		if(!ui)
+			ui = new(user, src, ui_key, "cargo_weather.tmpl", "[name] - Weather", 500, 400)
+			ui.set_initial_data(weather_data)
+			ui.set_auto_update(TRUE)
+			ui.open()
+		return
+
 	reconnectpads()
 	update_categories()
 
@@ -270,6 +315,18 @@ GLOBAL_LIST_EMPTY(faction_dosh)
 			SSnanoui.close_user_uis(user, src, "product_details")
 			return
 		show_product_details(user, available_products[detail_index], detail_index, ui)
+		return
+
+	if(ui_key != "cargo")
+		var/list/hub_data = list(
+			"machine_name" = name,
+			"accent" = id == RED_TEAM ? "#d35b52" : "#6b9ed6"
+		)
+		ui = SSnanoui.try_update_ui(user, src, ui_key, ui, hub_data, force_open)
+		if(!ui)
+			ui = new(user, src, ui_key, "cargo_hub.tmpl", "[name] - Applications", 500, 400)
+			ui.set_initial_data(hub_data)
+			ui.open()
 		return
 
 	var/list/data = list()
@@ -337,6 +394,17 @@ GLOBAL_LIST_EMPTY(faction_dosh)
 /obj/machinery/kaos/cargo_machine/OnTopic(user, href_list)
 	if(!CanPhysicallyInteract(user))
 		return TOPIC_NOACTION
+
+	if(href_list["action"] == "open_app")
+		var/app = href_list["app"]
+		if(!(app in list("main", "cargo", "weather")))
+			return TOPIC_NOACTION
+		SSnanoui.close_user_uis(user, src, "main")
+		SSnanoui.close_user_uis(user, src, "cargo")
+		SSnanoui.close_user_uis(user, src, "weather")
+		SSnanoui.close_user_uis(user, src, "product_details")
+		ui_interact(user, app)
+		return TOPIC_REFRESH
 
 	if(!useable)
 		playsound(src.loc, 'sound/machines/rpf/denybeep.ogg', 100, 0.3)
